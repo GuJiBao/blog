@@ -1,0 +1,5 @@
+dist
+db
+node_modules
+.idea
+runMongdb.bat

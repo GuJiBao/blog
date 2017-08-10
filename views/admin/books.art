@@ -1,0 +1,60 @@
+{{extend './layout.art'}}
+{{block 'title'}}后台管理-书籍资料{{/block}}
+{{block 'content'}}
+{{include './header.art'}}
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><span>当前位置：</span></li>
+    <li><a href="/admin">首页</a></li>
+    <li class="active"><span>书籍资料</span></li>
+  </ol>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">书籍资料</h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-tool clearfix">
+        <span class="pull-right"><a href="/admin/books/add" class="btn btn-primary">新增书籍</a></span>
+      </div>
+      <div class="table-list mt15">
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+          <tr>
+            <th width="220">ID</th>
+            <th width="160">书籍名称</th>
+            <th>书籍封面</th>
+            <th>分类</th>
+            <th>简介</th>
+            <th>下载链接</th>
+            <th>下载密码</th>
+            <th>添加时间</th>
+            <th class="text-center" width="220">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{each books}}
+            {{set id = $value._id.toString()}}
+            <tr>
+              <td>{{id}}</td>
+              <td>{{$value.name}}</td>
+              <td><img src="/public/images/book/{{$value.cover|| 'book_default.png'}}" width="80" height="80" /></td>
+              <td>{{$value.bookClassify.name}}</td>
+              <td>{{$value.description}}</td>
+              <td>{{$value.downloadLink}}</td>
+              <td>{{$value.downloadPw}}</td>
+              <td>{{$value.addTime | dateFormat 'yyyy-MM-dd hh:mm:ss'}}</td>
+              <td class="text-center"><a href="/admin/books/edit?id={{id}}" class="btn btn-default editBtn">编辑</a><a
+                href="javascript:;" class="btn btn-warning ml10 delBtn" data-id="{{id}}">删除</a></td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{include './page.art'}}
+    </div>
+  </div>
+</div>
+{{/block}}
+{{block 'linkJs'}}
+<script src="/public/js/books.js"></script>
+{{/block}}

@@ -1,0 +1,40 @@
+/*公共样式*/
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+
+/*弹出窗口样式*/
+.page-pop {
+  padding: 20px 15px 0;
+}
+
+/*验证失败*/
+.error {
+  color: #c00;
+}
+
+/*登录页面*/
+.login-wrap {
+  width: 450px;
+  margin: 150px auto 0;
+}
+.login-wrap .fa {
+  color: #1b6d85;
+}
+
+.updown-img .pic {
+  margin-bottom: 12px;
+}
+.updown-img .pic, .updown-img .pic img {
+  width: 80px;
+  height: 80px;
+}

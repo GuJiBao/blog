@@ -1,0 +1,58 @@
+{{extend './layout.art'}}
+{{block 'title'}}后台管理-学习笔记{{/block}}
+{{block 'content'}}
+{{include './header.art'}}
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><span>当前位置：</span></li>
+    <li><a href="/admin">首页</a></li>
+    <li class="active"><span>笔记</span></li>
+  </ol>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">笔记</h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-tool clearfix">
+        <span class="pull-right"><a href="/admin/notes/add" class="btn btn-primary">新增笔记</a></span>
+      </div>
+      <div class="table-list mt15">
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+          <tr>
+            <th width="220">ID</th>
+            <th width="260">标题</th>
+            <th>分类</th>
+            <th>简介</th>
+            <th>内容</th>
+            <th width="220">时间</th>
+            <th width="60">阅读量</th>
+            <th class="text-center" width="180">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{each notes}}
+            {{set id = $value._id.toString()}}
+            <tr>
+              <td>{{id}}</td>
+              <td>{{$value.title}}</td>
+              <td>{{$value.noteClassify.name}}</td>
+              <td>{{$value.description}}</td>
+              <td>{{$value.content}}</td>
+              <td>{{$value.addTime}}</td>
+              <td>{{$value.views}}</td>
+              <td class="text-center"><a href="/admin/notes/edit?id={{id}}" class="btn btn-default editBtn">编辑</a><a
+                href="javascript:;" class="btn btn-warning ml10 delBtn" data-id="{{id}}">删除</a></td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{include './page.art'}}
+    </div>
+  </div>
+</div>
+{{/block}}
+{{block 'linkJs'}}
+<script src="/public/js/notes.js"></script>
+{{/block}}

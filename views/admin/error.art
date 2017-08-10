@@ -1,0 +1,25 @@
+{{extend './layout.art'}}
+{{block 'title'}}后台管理-首页{{/block}}
+{{block 'content'}}
+{{include './header.art'}}
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><span>当前位置：</span></li>
+    <li><a href="/admin">首页</a></li>
+    <li class="active"><span>错误提示</span></li>
+  </ol>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">错误提示</h3>
+    </div>
+    <div class="panel-body">{{message}}</div>
+    <div class="panel-footer">
+      {{if url}}
+      <a href="{{url}}">点击这里跳转</a>
+      {{else}}
+      <a href="javascript:window.history.back();">返回上一步</a>
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{/block}}

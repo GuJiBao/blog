@@ -1,0 +1,11 @@
+{{extend './layout.art'}}
+{{block 'title'}}后台管理-首页{{/block}}
+{{block 'content'}}
+    {{include './header.art'}}
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <h1>欢迎来到顾纪宝的后台管理系统！</h1>
+        <p>在这里，你可以对前台的内容进行添加、更新、删除等操作！</p>
+      </div>
+    </div>
+{{/block}}
