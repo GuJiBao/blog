@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Menus = require('../models/Menus');
 var User = require('../models/User');
+var Notes = require('../models/Notes');
 
 // 统一返回格式
 var responseData;
@@ -165,6 +166,17 @@ router.get('/user/logOut', function (req, res) {
   res.json(responseData);
 });
 
+/*
+* 笔记的获取
+* */
+router.get('/getNotes', function(req, res) {
+  var limit = Number(req.query.limit) || 10;
+  Notes.find().limit(limit).sort({addTime: -1}).then(function(notes) {
+    responseData.data = notes;
+    res.json(responseData);
+    return false;
+  })
+});
 
 
 module.exports = router;

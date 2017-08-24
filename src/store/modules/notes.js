@@ -6,13 +6,15 @@ const state = {
 }
 
 const getters = {
-  getAllData: state => state.allData
+  getNotes: state => state.allData
 }
 
 const actions = {
-  getAllNotes ({ commit }) {
-    axios.get('/notes').then(function (response) {
-      commit(types.RECEIVE_NOTES, { notes: response.data.list })
+  getNoteData ({commit}, params) {
+    axios.get('/api/getNotes', {params: {
+      limit: params.limit
+    }}).then(function (response) {
+      commit(types.RECEIVE_NOTES, { notes: response.data.data })
     }).catch(function (error) {
       console.log(error)
     })

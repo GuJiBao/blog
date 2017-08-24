@@ -2,17 +2,10 @@
   <article class="page-container">
     <div class="page-content wrap clearfix">
       <div class="page-content-main fl">
-        <section class="g-panel notes-box" v-for="item in notesData">
-          <div class="g-panel-title">
-            <h3 class="title"><a href="#"><i class="fa fa-header fa-title"></i>{{ item.title }}</a></h3>
-          </div>
-          <div class="g-panel-body">
-            <p class="text">
-              {{ item.details | substr }}
-            </p>
-            <div class="notes-box-foot clearfix">
-              <a href="#" class="a-more">更多...</a>
-            </div>
+        <section class="g-panel home-notes">
+          <div class="g-panel-title"><h3>笔记列表</h3></div>
+          <div class="g-panel-content">
+            <Note listNum="2"/>
           </div>
         </section>
       </div>
@@ -24,29 +17,17 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   import Login from './layout/login'
+  import Note from './Note.vue'
+
   export default {
     components: {
-      Login
+      Login,
+      Note
     },
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    created () {
-      this.$store.dispatch('getAllNotes')
-    },
-    computed: {
-      ...mapGetters({
-        notesData: 'getAllData'
-      })
-    },
-    filters: {
-      substr: function (value) {
-        if (!value) return ''
-        return value.substr(0, 100) + '...'
       }
     },
     methods: {
@@ -74,37 +55,17 @@
       h3 {
         height: 40px;
         line-height: 40px;
+        font-size: 16px;
       }
     }
     &-body {
       padding: 15px;
     }
   }
-  .notes-box {
+  .home-notes {
     margin-top: 20px;
     border: 1px solid #eee;
-    .title {
-      font-size: 16px;
-    }
-    .text {
-      padding-bottom: 15px;
-      border-bottom: 1px dashed #ddd;
-      text-indent: 25px;
-      line-height: 22px;
-      font-size: 14px;
-      color: #666;
-    }
-    &-foot {
-      padding: 15px 0 0;
-      .a-more {
-        float: right;
-        margin-right: 25px;
-        color: @bClor;
-        &:hover {
-          color: @bClorH;
-        }
-      }
-    }
+
   }
 
   /*侧边栏*/

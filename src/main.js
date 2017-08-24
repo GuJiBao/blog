@@ -6,9 +6,9 @@ import router from './router'
 import store from './store'
 
 // mock数据模拟
-if (process.env.NODE_ENV !== 'production') {
-  require('./api')
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   require('./api')
+// }
 
 Vue.config.productionTip = false
 
