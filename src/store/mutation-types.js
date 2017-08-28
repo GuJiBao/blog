@@ -1,7 +1,6 @@
 // 登录
 export const RECEIVE_LOGININFO = 'RECEIVE_LOGININFO'
 export const CHECKOUT_LOGINMSG = 'CHECKOUT_LOGINMSG'
-// 菜单
-export const RECEIVE_MENUS = 'RECEIVE_MENUS'
+
 // 前端笔记
 export const RECEIVE_NOTES = 'RECEIVE_NOTES'

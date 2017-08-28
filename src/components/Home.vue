@@ -3,9 +3,9 @@
     <div class="page-content wrap clearfix">
       <div class="page-content-main fl">
         <section class="g-panel home-notes">
-          <div class="g-panel-title"><h3>笔记列表</h3></div>
+          <div class="g-panel-title"><h3>笔记</h3></div>
           <div class="g-panel-content">
-            <Note listNum="2"/>
+            <Note listNum="5"/>
           </div>
         </section>
       </div>
@@ -18,7 +18,7 @@
 
 <script>
   import Login from './layout/login'
-  import Note from './Note.vue'
+  import Note from './note/Note.vue'
 
   export default {
     components: {

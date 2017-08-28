@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var Menus = require('../models/Menus');
 var User = require('../models/User');
 var Notes = require('../models/Notes');
 
@@ -13,24 +12,6 @@ router.use(function (req, res, next) {
     msg: ''
   }
   next();
-});
-
-/*
-* 获取菜单
-* */
-router.get('/menus', function (req, res) {
-  Menus.find().sort({order: 1}).then(function (menus) {
-    if (menus.length > 0) {
-      responseData.data = menus;
-    } else {
-      responseData = {
-        code: 1,
-        msg: '没有菜单数据！'
-      };
-    }
-    res.json(responseData);
-    return false;
-  });
 });
 
 /*

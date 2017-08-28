@@ -1,7 +1,7 @@
 <template>
   <header class="header-wrap">
     <div class="wrap header clearfix">
-      <h1 class="logo">我的测试<i class="t">Gujb</i></h1>
+      <h1 class="logo">我的博客<i class="t">Gujb</i></h1>
       <div class="search">
         <input type="text" class="input-text" placeholder="请输入..."><button href="javascript:;" class="btn btn-success ml10"><i class="fa fa-search"></i>搜索</button>
       </div>
@@ -9,22 +9,21 @@
     <div class="nav-wrap">
       <nav id="nav" class="wrap">
         <a href="/" class="active">首页</a>
-        <a :href="item.url" v-for="(item, key) in menusData">{{ item.name }}</a>
+        <a href="/notes">笔记</a>
+        <a href="/books">书籍资料</a>
+        <a href="/tools">工具</a>
+        <a href="/about">关于我</a>
       </nav>
     </div>
   </header>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
 
   export default {
     created () {
-      this.$store.dispatch('menus/getMenus')
     },
     computed: {
-      ...mapGetters({
-        menusData: 'menus/getMenus'
-      })
+
     }
   }
 </script>

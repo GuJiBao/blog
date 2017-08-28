@@ -28,3 +28,7 @@ defaults.imports.dateFormat = function(date, format){
   });
   return format;
 };
+
+defaults.imports.getChars = function(str, index) {
+  return str.substr(0, index) + '...';
+};

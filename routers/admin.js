@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var formidable = require('formidable');
 var fs = require('fs');
-var Menus = require('../models/Menus');
 var User = require('../models/User');
 var Notes = require('../models/Notes');
 var NoteClassify = require('../models/NoteClassify');
@@ -15,34 +14,17 @@ require('../assist/artTemplateFilter'); // 载入art-teplate过滤器
 var responseData;
 
 router.use(function (req, res, next) {
-
   // 判断是否登录
   if (!req.userInfo.isAdmin) {
     res.send('对不起，只有管理员才可以进入后台管理');
     return false;
   }
-
   // 返回格式
   responseData = {
     code: 0,
     msg: ''
   };
-
-  try {
-    // 获取菜单
-    Menus.find().sort({order: 1}).then(function (menus) {
-      req.menuLists = [];
-      for (var i = 0, len = menus.length; i < len; i++) {
-        req.menuLists.push({
-          name: menus[i].name,
-          url: menus[i].url
-        });
-      }
-      next();
-    });
-  } catch (err) {
-    next();
-  }
+  next();
 });
 
 /*
