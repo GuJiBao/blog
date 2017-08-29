@@ -1,9 +1,9 @@
 <template>
   <div class="note-list">
     <div class="item" v-for="note in notes">
-      <h3 class="title"><a :href="'/note/detail?id=' + note._id">{{note.title}}</a></h3>
+      <h3 class="title"><router-link :to="'/noteDetail/' + note._id" class="a-link">{{note.title}}</router-link></h3>
       <p class="descr">{{note.description | getChars(50)}}</p>
-      <div class="tips"><span class="time">{{note.addTime}}</span>
+      <div class="tips"><span class="time">{{note.addTime | dateFormat('yyyy-MM-dd hh:mm:ss')}}</span>
         <router-link :to="'/noteDetail/' + note._id" class="a-link">查看详情</router-link>
       </div>
     </div>
@@ -11,6 +11,7 @@
 </template>
 <script>
   import { mapGetters } from 'vuex'
+  import Filter from '../../assets/js/filters'
 
   export default {
     props: ['listNum'],
@@ -27,13 +28,7 @@
         notes: 'getNotes'
       })
     },
-    filters: {
-      getChars: (str, index) => {
-        if (str) {
-          return str.length > index ? str.substr(0, index) + '...' : str
-        }
-      }
-    }
+    filters: Filter
   }
 </script>
 <style lang="less" scoped>

@@ -1,68 +1,62 @@
 <template>
-  <div class="note-detail">
-
-  </div>
+  <article class="page-container">
+    <div class="page-content wrap clearfix">
+      <div class="page-content-main fl">
+        <div class="detail-wrap note-detail">
+          <h1 class="title">{{data.title}}</h1>
+          <div class="note-content">
+            {{data.content}}
+          </div>
+          <DetailPage :prevData="prevNote" :nextData="nextNote"></DetailPage>
+        </div>
+      </div>
+      <div class="page-content-aside fr">
+        <Login></Login>
+      </div>
+    </div>
+  </article>
 </template>
 <script>
   import { mapGetters } from 'vuex'
+  import Login from '../layout/login'
+  import DetailPage from '../layout/DetailPage'
 
   export default {
-    props: ['listNum'],
-    data () {
-      return {}
+    components: {
+      Login,
+      DetailPage
     },
     created () {
-      this.$store.dispatch('getNoteData', {
-        limit: this.listNum
+      this.$store.dispatch('getNoteDetailData', {
+        id: this.$route.params.id
       })
+    },
+    mounted () {
     },
     computed: {
       ...mapGetters({
-        notes: 'getNotes'
+        data: 'getNoteDetailData',
+        prevNote: 'getPrevNote',
+        nextNote: 'getNextNote'
       })
-    },
-    filters: {
-      getChars: (str, index) => {
-        return str.length > index ? str.substr(0, index) + '...' : str
-      }
     }
   }
 </script>
 <style lang="less" scoped>
-  .note {
-    &-list {
-      padding: 0 15px 15px;
-      .item {
-        margin-top: 15px;
-        padding: 10px 15px 15px;
-        background-color: #f9f9f9;
-        .title {
-          height: 35px;
-          line-height: 35px;
-          border-bottom: 1px dashed #c7c8c9;
-          font-size: 14px;
-          font-weight: 900;
-        }
-        .descr {
-          margin: 15px 0 10px;
-          color: #666;
-          font-size: 14px;
-        }
-        .tips {
-          height: 30px;
-          line-height: 30px;
-          overflow: hidden;
-          .time {
-            font-size: 12px;
-            color: #999;
-          }
-          .a-link {
-            float: right;
-            font-size: 14px;
-            color: #42b983;
-          }
-        }
-      }
+  .detail-wrap {
+    margin-top: 20px;
+    padding: 10px 15px 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.24);
+    border: 1px solid #eee;
+    .title {
+      padding: 30px 0;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .note-content {
+      line-height: 25px;
     }
   }
 </style>
