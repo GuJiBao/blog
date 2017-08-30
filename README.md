@@ -1,4 +1,7 @@
 <h2>个人博客网站</h2>
-<p>主要技术栈：</p>
-<p>前台：node.js+vue.js(vue+vuex+vue-router)，完成登录功能，其他功能待开发...</p>
-<p>后台：bootstrap+jQuery+node.js，完成部分功能包括笔记的管理、书籍资料的管理、分类管理功能</p>
+<p>前台已完成模块包括：注册/登录功能、笔记列表展示，其他功能待开发...</p>
+<p>后台操作已完成模块：笔记的管理、书籍资料的管理、分类管理等功能</p>
+<h3>用到技术栈</h3>
+<p>前台vue.js(全家桶)+webpack+axios等</p>
+<p>后台bootstrap+jquery</p>
+<p>后端语言：node.js+express</p>
